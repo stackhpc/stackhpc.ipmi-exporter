@@ -1,13 +1,13 @@
 ---
-- name: Ensure SSM container is stopped
+- name: Ensure ipmi_exporter container is stopped
   docker_container:
     name: "{{ item.value.container_name }}"
     state: "absent"
-  with_dict: "{{ ssm_services }}"
+  with_dict: "{{ ipmi_exporter_services }}"
 
-- name: Ensure SSM volumes are absent
+- name: Ensure ipmi_exporter volumes are absent
   docker_volume:
     name: "{{ volume }}"
     with_subelements:
-      - "{{ ssm_services }}"
+      - "{{ ipmi_exporter_services }}"
       - volumes

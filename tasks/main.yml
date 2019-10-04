@@ -1,7 +1,7 @@
 ---
 - name: Fail if the image is not defined
   fail:
-    msg: SSM Docker image must be defined via 'ssm_image'.
-  when: ssm_image is none
+    msg: ipmi_exporter Docker image must be defined via 'ipmi_exporter_image'.
+  when: ipmi_exporter_image is none
 
-- include: "{{ ssm_action }}.yml"
+- include: "{{ ipmi_exporter_action }}.yml"

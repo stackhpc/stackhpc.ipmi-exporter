@@ -11,8 +11,8 @@
     privileged: "{{ item.value.privileged | default(omit) }}"
     published_ports: "{{ item.value.published_ports | default(omit) }}"
     read_only: "{{ item.value.read_only | default(omit) }}"
-    restart_policy: "{{ ssm_restart_policy }}"
-    restart_retries: "{{ ssm_restart_retries if ssm_restart_policy == 'on-failure' else omit }}"
+    restart_policy: "{{ ipmi_exporter_restart_policy }}"
+    restart_retries: "{{ ipmi_exporter_restart_retries if ipmi_exporter_restart_policy == 'on-failure' else omit }}"
     state: "{{ item.value.enabled | ternary('started', 'absent') }}"
     tmpfs: "{{ item.value.tmpfs | default(omit) }}"
     volumes: "{{ item.value.volumes }}"
@@ -21,5 +21,5 @@
 
 - name: Set fact containing list of containers that were started
   set_fact:
-    ssm_containers_started: "{{ ssm_containers_started | default([]) + [item.value.container_name] }}"
+    ipmi_exporter_containers_started: "{{ ipmi_exporter_containers_started | default([]) + [item.value.container_name] }}"
   when: result.changed  # noqa 503

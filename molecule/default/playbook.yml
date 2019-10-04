@@ -4,9 +4,8 @@
   vars:
     pip_install_packages:
       - name: docker
-    ssm_image: ssm
-    ssm_receiver_enabled: true
-    ssm_sender_enabled: true
+    ipmi_exporter_image: ipmi_exporter
+    ipmi_exporter_devices: []
   pre_tasks:
     - name: install dependencies
       package:
@@ -16,9 +15,9 @@
   roles:
     - geerlingguy.pip
     - geerlingguy.docker
-    - role: stackhpc.ssm
+    - role: stackhpc.ipmi-exporter
       vars:
-        ssm_action: build
-    - role: stackhpc.ssm
+        ipmi_exporter_action: build
+    - role: stackhpc.ipmi_exporter
       vars:
-        ssm_action: deploy
+        ipmi_exporter_action: deploy

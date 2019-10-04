@@ -7,4 +7,4 @@
 
 - name: Include tasks to create containers
   include_tasks: create.yml
-  with_dict: "{{ ssm_services }}"
+  with_dict: "{{ ipmi_exporter_services }}"

@@ -7,5 +7,5 @@
     state: started
   # Prevent container from being started and then restarted
   when:
-    - item not in ssm_containers_started | default([])
-  with_items: "{{ ssm_container_restart_list | default([]) | unique }}"
+    - item not in ipmi_exporter_containers_started | default([])
+  with_items: "{{ ipmi_exporter_container_restart_list | default([]) | unique }}"

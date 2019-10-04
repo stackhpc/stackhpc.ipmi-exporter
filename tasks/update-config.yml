@@ -3,7 +3,7 @@
 - name: Ensure configuration file is copied
   template:
     src: "{{ config_file.src }}"
-    dest: "{{ ssm_config_path }}/{{ config_file.basename }}"
+    dest: "{{ ipmi_exporter_config_path }}/{{ config_file.basename }}"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0755
@@ -17,5 +17,5 @@
 
 - name: Set fact containing list of containers that had config changed
   set_fact:
-    ssm_container_restart_list: "{{ ssm_container_restart_list | default([]) + [item.value.container_name] }}"
+    ipmi_exporter_container_restart_list: "{{ ipmi_exporter_container_restart_list | default([]) + [item.value.container_name] }}"
   when: result.changed  # noqa 503

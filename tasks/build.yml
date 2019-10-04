@@ -4,15 +4,15 @@
   git:
     repo: "{{ item.value.repo.url }}"
     version: "{{ item.value.repo.version }}"
-    dest: "{{ ssm_repo_checkout_path }}/{{ item.value.repo.url | basename }}"
-  with_dict: "{{ ssm_images }}"
+    dest: "{{ ipmi_exporter_repo_checkout_path }}/{{ item.value.repo.url | basename }}"
+  with_dict: "{{ ipmi_exporter_images }}"
 
 - name: Ensure image is built
   docker_image:
     buildargs: "{{ item.value.buildargs | default(omit) }}"
-    force: "{{ ssm_force_rebuild }}"
+    force: "{{ ipmi_exporter_force_rebuild }}"
     name: "{{ item.value.name }}"
-    path: "{{ ssm_repo_checkout_path }}/{{ item.value.repo.url | basename }}"
-    push: "{{ ssm_push }}"
+    path: "{{ ipmi_exporter_repo_checkout_path }}/{{ item.value.repo.url | basename }}"
+    push: "{{ ipmi_exporter_push }}"
     state: present
-  with_dict: "{{ ssm_images }}"
+  with_dict: "{{ ipmi_exporter_images }}"
