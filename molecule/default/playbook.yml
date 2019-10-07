@@ -18,6 +18,6 @@
     - role: stackhpc.ipmi-exporter
       vars:
         ipmi_exporter_action: build
-    - role: stackhpc.ipmi_exporter
+    - role: stackhpc.ipmi-exporter
       vars:
         ipmi_exporter_action: deploy

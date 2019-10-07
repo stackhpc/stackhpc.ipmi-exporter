@@ -33,7 +33,7 @@ ipmi_exporter_image_full: "{{ ipmi_exporter_image }}:{{ ipmi_exporter_tag }}"
 
 # Where to listen
 ipmi_exporter_listen_port: 9290
-ipmi_exporter_listen_address: localhost
+ipmi_exporter_listen_address: 127.0.0.1
 
 # ipmi devives required for localmode
 ipmi_exporter_devices:
@@ -58,7 +58,7 @@ ipmi_exporter_images:
       version: "{{ ipmi_exporter_repo_version }}"
 
 # URL of the git repo containing the image.
-ipmi_exporter_repo_url: "https://github.com/ksanislo/ipmi-exporter/"
+ipmi_exporter_repo_url: "https://github.com/ksanislo/ipmi-exporter"
 
 # Version to check out for the git repo containing the image.
 ipmi_exporter_repo_version: master
@@ -73,4 +73,4 @@ ipmi_exporter_push: false
 ipmi_exporter_force_rebuild: false
 
 # IPMI exporter conifg
-ipmi_exporter_sender_config: local.yml
+ipmi_exporter_config: local.yml

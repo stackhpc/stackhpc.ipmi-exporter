@@ -9,6 +9,7 @@
     name: "{{ item.value.container_name }}"
     network_mode: "{{ item.value.network_mode | default(omit) }}"
     privileged: "{{ item.value.privileged | default(omit) }}"
+    ports: "{{ item.value.ports | default(omit) }}"
     published_ports: "{{ item.value.published_ports | default(omit) }}"
     read_only: "{{ item.value.read_only | default(omit) }}"
     restart_policy: "{{ ipmi_exporter_restart_policy }}"
