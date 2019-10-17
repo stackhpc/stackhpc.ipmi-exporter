@@ -3,8 +3,21 @@ sudo: required
 language: python
 services:
   - docker
+addons:
+  apt:
+    packages:
+      - docker-ce
 before_install:
   - sudo apt-get -qq update
+  # Reconfigure docker to be more efficient
+  - |
+    echo '{
+      "experimental": true,
+      "storage-driver": "overlay2",
+      "max-concurrent-downloads": 50,
+      "max-concurrent-uploads": 50
+    }' | sudo tee /etc/docker/daemon.json
+  - sudo service docker restart
 install:
   # workaround https://github.com/ansible/molecule/issues/2083
   - pip install molecule==2.19 ansible==2.7.11
