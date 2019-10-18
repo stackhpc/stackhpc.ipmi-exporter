@@ -16,6 +16,9 @@ provisioner:
   name: ansible
   options:
     become: true
+  playbooks:
+    prepare: prepare.yml
+    converge: playbook.yml
   lint:
     name: ansible-lint
     options:
